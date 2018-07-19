@@ -1,5 +1,5 @@
 ---
-name: "dash-osx-0.12"
+name: "mash-osx-0.12"
 enable_cache: true
 suites:
 - "trusty"
@@ -23,8 +23,8 @@ packages:
 - "python"
 reference_datetime: "2017-01-01 00:00:00"
 remotes:
-- "url": "https://github.com/dashpay/dash.git"
-  "dir": "dash"
+- "url": "https://github.com/luminousdev0/mash.git"
+  "dir": "mash"
 files:
 - "MacOSX10.9.sdk.tar.gz"
 script: |
@@ -86,7 +86,7 @@ script: |
   ./autogen.sh
   CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --prefix=/
   make dist
-  SOURCEDIST=`echo dashcore-*.tar.gz`
+  SOURCEDIST=`echo mashcore-*.tar.gz`
   DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
 
   # Correct tar file order
@@ -123,7 +123,7 @@ script: |
     popd
 
     make deploy
-    ${WRAP_DIR}/dmg dmg Dash-Core.dmg ${OUTDIR}/${DISTNAME}-osx-unsigned.dmg
+    ${WRAP_DIR}/dmg dmg Mash-Core.dmg ${OUTDIR}/${DISTNAME}-osx-unsigned.dmg
 
     cd installed
     find . -name "lib*.la" -delete
